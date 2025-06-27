@@ -1,0 +1,157 @@
+// 📁 LIBAAYA Website – React + Tailwind Project
+// ✨ Pages: Home, About, Gallery, Contact, Lookbook
+
+// package.json
+{
+  "name": "libaaya",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
+}
+
+// tailwind.config.js
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+// postcss.config.js
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+
+// public/index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIBAAYA</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+
+// src/index.js
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+
+// src/index.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// src/App.js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Gallery from "./pages/Gallery";
+import Contact from "./pages/Contact";
+import Lookbook from "./pages/Lookbook";
+
+function App() {
+  return (
+    <Router>
+      <div className="min-h-screen bg-[#fdfaf7] text-[#222]">
+        <nav className="flex justify-center gap-6 p-4 bg-white shadow">
+          <Link to="/" className="text-[#c8a14e] font-bold">LIBAAYA</Link>
+          <Link to="/about">About</Link>
+          <Link to="/gallery">Gallery</Link>
+          <Link to="/lookbook">Lookbook</Link>
+          <Link to="/contact">Contact</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/lookbook" element={<Lookbook />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+// src/pages/Home.js
+import React from "react";
+export default function Home() {
+  return (
+    <div className="flex flex-col items-center justify-center py-20">
+      <h1 className="text-5xl font-bold text-[#c8a14e]">Welcome to LIBAAYA</h1>
+      <p className="mt-4 text-lg text-gray-700">Modern Royal Fashion, Made in India 🇮🇳</p>
+    </div>
+  );
+}
+
+// src/pages/About.js
+import React from "react";
+export default function About() {
+  return (
+    <div className="p-10 text-center">
+      <h2 className="text-3xl font-semibold text-[#c8a14e]">About LIBAAYA</h2>
+      <p className="mt-4 text-gray-600">LIBAAYA blends elegance with culture to create royal, timeless fashion experiences.</p>
+    </div>
+  );
+}
+
+// src/pages/Gallery.js
+import React from "react";
+export default function Gallery() {
+  return (
+    <div className="p-10 text-center">
+      <h2 className="text-3xl font-semibold text-[#c8a14e]">Gallery</h2>
+      <p className="mt-4 text-gray-600">Photos and visuals coming soon...</p>
+    </div>
+  );
+}
+
+// src/pages/Lookbook.js
+import React from "react";
+export default function Lookbook() {
+  return (
+    <div className="p-10 text-center">
+      <h2 className="text-3xl font-semibold text-[#c8a14e]">Lookbook</h2>
+      <p className="mt-4 text-gray-600">Explore our curated collections.</p>
+    </div>
+  );
+}
+
+// src/pages/Contact.js
+import React from "react";
+export default function Contact() {
+  return (
+    <div className="p-10 text-center">
+      <h2 className="text-3xl font-semibold text-[#c8a14e]">Contact Us</h2>
+      <p className="mt-4 text-gray-600">Reach out on Instagram @libaaya.brand</p>
+    </div>
+  );
+}
